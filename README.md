@@ -26,7 +26,7 @@ The piwebapp folder corresponding source files that are used to build the docker
 <table style="table-layout: fixed; text-align:center;">
   <tr>
     <td><img src="img/diag.png" style="max-width:30vw"></td>
-    <td><img src="img/team.jpg" style="max-width:30vw"></td>
+    <td><img src="img/team.JPG" style="max-width:30vw"></td>
   </tr>
 </table>
 
