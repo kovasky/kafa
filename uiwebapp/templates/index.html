@@ -1,0 +1,64 @@
+<!--
+Copyright 2021 by Kovasky Buezo and Fernando Saenz
+This file is part of the Thermostat Enhancer presented for MakeUofT
+Written by Kovasky Buezo <kab310@mun.ca>, February 2021
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+	<meta charset="UTF-8">
+	<title>Thermostat Control - Home</title>
+	<link rel="stylesheet" href="/static/style.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+		ambientTemp={{ambientTemp}};
+		desiredTemp={{desiredTemp}};
+	</script>
+</head>
+
+<body>
+	<div id='container' class="container">
+		<div class="row text-nowrap" style="padding-top: 15vh;">
+            <cdiv class="col" style="text-align: center;">
+                <h1 style="color:white;">Home</h1>
+            </cdiv>
+        </div>
+		<div class="row">
+			<div class="col">
+				<div id='thermostat' class="container"></div>
+				<div id='controls' style="visibility:hidden;">
+					<label><span>Target Temperature</span>
+						<input type='range' min='0' max='30' value='10' id='input_target_temperature' step='0.5' />
+					</label>
+					<label><span>Ambient Temperature</span>
+						<input type='range' min='-5' max='40' value='10' id='input_ambient_temperature' step='0.5' />
+					</label>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<div class="container">
+			<ul id="menu" class="shadow" sytle="padding-top:15vh;">
+				<li>
+					<a href="/stats">Stats</a>
+				</li>
+				<li>
+					<a href="/home">Home</a>
+				</li>
+				<li>
+					<a href="/settings">Settings</a>
+				</li>
+				<li>
+					<a href="/logs" target="_blank">Logs</a>
+				</li>
+			</ul>
+		</div>
+	</footer>
+	<script src="/static/script.js"></script>
+</body>
+</html>

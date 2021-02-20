@@ -1,0 +1,38 @@
+<!--
+Copyright 2021 by Kovasky Buezo and Fernando Saenz
+This file is part of the Thermostat Enhancer presented for MakeUofT
+Written by Kovasky Buezo <kab310@mun.ca>, February 2021
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Thermostat Control - Logs</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div id='container' class="container">
+        <div class="row text-nowrap" style="padding-top: 15vh;">
+            <cdiv class="col" style="text-align: center;">
+                <h1 style="color:white;">Home</h1>
+            </cdiv>
+        </div>
+        <div class="row">
+            <div class="col" style="text-align: center;">
+                <div class="overflow-auto container" style="max-width=80vw">
+                    {% set list1 = logs.split('\n') %}
+                    {% for item in list1 %}
+                        <p>{{ item }}</p>
+                    {% endfor %} 
+                  </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

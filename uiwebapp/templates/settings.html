@@ -1,0 +1,101 @@
+<!--
+Copyright 2021 by Kovasky Buezo and Fernando Saenz
+This file is part of the Thermostat Enhancer presented for MakeUofT
+Written by Kovasky Buezo <kab310@mun.ca>, February 2021
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Thermostat Control - Settings</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        start={{start}};
+        end = {{end}};
+    </script>
+</head>
+
+<body>
+    <!-- partial:index.partial.html -->
+    <div id='container' class="container">
+        <div class="row text-nowrap" style="padding-top: 15vh;">
+            <cdiv class="col" style="text-align: center;">
+                <h1 style="color:white;">Settings</h1>
+            </cdiv>
+        </div>
+        <div class="row" style="padding-top: 15vh;">
+            <div class="col"></div>
+            <div class="col-6" style="text-align: center;">
+                <row>
+                    <select id="timeDropdownlist1" style="display: inline-block;"></select>
+                    <p class="text-nowrap" style="width:auto; color:white; margin:2vh">to</p>
+                    <select id="timeDropdownlist2" style="display: inline-block;"></select>
+                </row>
+                <row style="display: block; padding-top: 5vh;">
+                    <button id="button">Save</button>
+                </row>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+    <footer>
+        <div class="container">
+            <ul id="menu" class="shadow" sytle="padding-top:15vh;">
+                <li>
+                    <a href="/stats">Stats</a>
+                </li>
+                <li>
+                    <a href="/home">Home</a>
+                </li>
+                <li>
+                    <a href="/settings">Settings</a>
+                </li>
+                <li>
+                    <a href="/logs" target="_blank">Logs</a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+    <!-- partial -->
+    <script>
+        function populate(selector) {
+            var select = $(selector);
+            var hours, minutes, ampm;
+            for (var i = 0; i <= 1450; i += 60) {
+                hours = Math.floor(i / 60);
+                minutes = i % 60;
+                if (minutes < 10) {
+                    minutes = '0' + minutes; // adding leading zero to minutes portion
+                }
+                //add the value to dropdownlist
+                select.append($('<option></option>')
+                    .attr('value', hours)
+                    .text(hours + ':' + minutes));
+            }
+        }
+        //Calling the function on pageload
+        window.onload = function (e) {
+            populate('#timeDropdownlist1');
+            populate('#timeDropdownlist2');
+            document.getElementById("timeDropdownlist1").value =  document.getElementById("timeDropdownlist1").options[start].value;
+            document.getElementById("timeDropdownlist2").value =  document.getElementById("timeDropdownlist2").options[end].value;
+        }
+
+        document.getElementById("button").addEventListener("click", function () {
+            drop1 = document.getElementById("timeDropdownlist1");
+            val1 = drop1.options[drop1.selectedIndex].value
+            drop2 = document.getElementById("timeDropdownlist2");
+            val2 = drop2.options[drop2.selectedIndex].value
+            $.getJSON("http://192.168.2.71:5000/set/hour/" + val1.toString() + "/" + val2.toString(),function(result){
+			})
+        }); 
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+adafruit-blinka
+dht11
+mysql-connector-python
+pigpio
+adafruit-circuitpython-ads1x15
+gpiozero
+flask
+Flask-cors
+numpy
