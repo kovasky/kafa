@@ -1,4 +1,4 @@
-# KAFA - Thermostat Enhancer
+# KAFA - Thermostat Enhancer (Overall 1st Place Winner, MakeUofT 2021)
 ## Description
 Authors: Kovasky Buezo and Fernando Saenz
 
